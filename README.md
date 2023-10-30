@@ -17,7 +17,16 @@ This solution implements the software architecture design based on the following
 
 ---
 
-## :wrench: Build Source Code
+## :whale2: Deploy This Project via Docker
+
+1. Build app's Docker image via the **Execute-DockerBuild.ps1** script.
+2. Launch the app from a new container via the **Execute-DockerLaunch.ps1** script.
+
+:mag_right: You can investigate the content of this image via the **Execute-DockerRun.ps1** script.
+
+---
+
+## :wrench: Build This Project from Source Code
 
 Use **.NET 6 SDK** to build this project from source code.
 

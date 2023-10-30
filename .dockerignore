@@ -1,0 +1,13 @@
+# directories
+.github/
+.vs/
+.vscode/
+**/bin/
+**/obj/
+**/out/
+# files
+Create-DockerConfig.ps1
+Create-Solution.ps1
+Create-StyleCopConfig.ps1
+Dockerfile*
+**/*.md
