@@ -10,26 +10,35 @@ using RandomObjectsGenerator.Library.TargetModels;
 using static System.Console;
 
 const int targetCountOfObjects = 10;
+const string targetOutputFileName = "Persons.txt";
 
-// Step # 1.
-WriteLine($"Creating a collection from {targetCountOfObjects} randomly generated Person objects in memory ...");
+WriteLine($"Step # 1: Creating a collection from {targetCountOfObjects} randomly generated Person objects in memory ...");
 Person[] persons = PersonGenerator.GenerateTestObjects(targetCountOfObjects);
 
-// Step # 2.
-WriteLine("Serializing the collection to the JSON format ...");
+WriteLine("Step # 2: Serializing the collection to the JSON format ...");
 
-// Step # 3.
-WriteLine("Writing the serialization result to the current user desktop directory into the 'Persons.json' text file ...");
+WriteLine($"Step # 3: Writing the serialization result to the current user desktop directory into the '{targetOutputFileName}' text file ...");
 
-// Step # 4.
-WriteLine("Clearing the collection from the database in-memory ...");
+string outputFolderPath = (Environment.OSVersion.Platform == PlatformID.Win32NT) ?
+    Environment.GetFolderPath(Environment.SpecialFolder.Desktop) : Environment.CurrentDirectory;
+WriteLine($"Output Folder Path: '{outputFolderPath}'");
 
-// Step # 5.
-WriteLine("Reading serialized objects from the 'Persons.json' text file");
+StreamWriter stream = new (Path.Combine(outputFolderPath, targetOutputFileName));
 
-// Step # 6.
-WriteLine("Printing persons' count, credit card count, and the average values of child age ...");
 foreach (Person person in persons)
 {
-    WriteLine($"Person {person.FirstName} {person.LastName} has {person.CreditCardNumbers.Length}.");
+    stream.WriteLine($"Person {person.Id}: '{person.FirstName} {person.LastName}'");
+}
+
+stream.Close();
+
+WriteLine("Step # 4: Clearing the collection from the database in-memory ...");
+
+WriteLine("Step # 5: Reading serialized objects from the 'Persons.json' text file");
+
+WriteLine("Step # 6: Printing persons' count, credit card count, and the average values of child age ...");
+
+foreach (Person person in persons)
+{
+    WriteLine($"Person '{person.FirstName} {person.LastName}' has {person.CreditCardNumbers.Length}.");
 }

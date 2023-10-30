@@ -21,27 +21,27 @@ public static class PersonGenerator
     /// <returns>The array of the Person objects.</returns>
     public static Person[] GenerateTestObjects(uint count)
     {
-        Person person = new ()
-        {
-            Id = 0,
-            SequenceId = 0,
-            TransportId = Guid.NewGuid(),
-            FirstName = "Person's First Name",
-            LastName = "Person's Last Name",
-            Gender = Gender.Male,
-            Age = 100,
-            BirthDate = 100_000,
-            CreditCardNumbers = Array.Empty<string>(),
-            Phones = Array.Empty<string>(),
-            Salary = 100_000M,
-            IsMarried = false,
-            Children = Array.Empty<Child>(),
-        };
-
         List<Person> persons = new ();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < count; i++)
         {
+            Person person = new ()
+            {
+                Id = i,
+                SequenceId = i,
+                TransportId = Guid.NewGuid(),
+                FirstName = "Person's First Name",
+                LastName = "Person's Last Name",
+                Gender = Gender.Male,
+                Age = 100,
+                BirthDate = 100_000,
+                CreditCardNumbers = Array.Empty<string>(),
+                Phones = Array.Empty<string>(),
+                Salary = 100_000M,
+                IsMarried = false,
+                Children = Array.Empty<Child>(),
+            };
+
             persons.Add(person);
         }
 
