@@ -19,10 +19,12 @@ This solution implements the software architecture design based on the following
 
 ## :whale2: Deploy This Project via Docker
 
-1. Build app's Docker image via the **Execute-DockerBuild.ps1** script.
-2. Launch the app from a new container via the **Execute-DockerLaunch.ps1** script.
+This program can be built and launched into the Docker container via provided **PowerShell** and **Bash** scripts:
 
-:mag_right: You can investigate the content of this image via the **Execute-DockerRun.ps1** script.
+1. Build app's Docker image via the **Execute-DockerBuild** script.
+2. Launch the app from a new container via the **Execute-DockerLaunch** script.
+
+:mag_right: You can investigate the content of this image via the **Execute-DockerRun** script.
 
 ---
 
