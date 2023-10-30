@@ -1,6 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RandomObjectsGenerator.Library.TargetModels\RandomObjectsGenerator.Library.TargetModels.csproj" />
   </ItemGroup>
 
