@@ -7,6 +7,13 @@
     <ProjectReference Include="..\RandomObjectsGenerator.Library.Serialization\RandomObjectsGenerator.Library.Serialization.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
