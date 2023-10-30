@@ -9,6 +9,9 @@
                 "licenseFile": "LICENSE.md"
             },
             "headerDecoration": "---------------------------------------------------------------------------"
+        },
+        "orderingRules": {
+            "usingDirectivesPlacement": "outsideNamespace"
         }
     }
 }
