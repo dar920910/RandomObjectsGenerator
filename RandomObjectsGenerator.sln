@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomObjectsGenerator.Library.TargetModels", "RandomObjectsGenerator.Library.TargetModels\RandomObjectsGenerator.Library.TargetModels.csproj", "{EDF21983-889D-49CD-91AF-650E8BE6F7F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomObjectsGenerator.Library.TargetModels.UnitTests", "RandomObjectsGenerator.Library.TargetModels.UnitTests\RandomObjectsGenerator.Library.TargetModels.UnitTests.csproj", "{B92C1BBC-C9B5-412C-BD66-03B90EF170FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomObjectsGenerator.Library.Core", "RandomObjectsGenerator.Library.Core\RandomObjectsGenerator.Library.Core.csproj", "{02E9C146-D12C-4DB7-8384-33FD8BCDBA42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomObjectsGenerator.Library.DatabaseContext.InMemory", "RandomObjectsGenerator.Library.DatabaseContext.InMemory\RandomObjectsGenerator.Library.DatabaseContext.InMemory.csproj", "{8A71D5F2-46B8-4A6A-A87C-C430D34628AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomObjectsGenerator.Library.Serialization", "RandomObjectsGenerator.Library.Serialization\RandomObjectsGenerator.Library.Serialization.csproj", "{0592BE58-1DA0-4FF0-8D0F-D1F5A850D7C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomObjectsGenerator.App.CLI", "RandomObjectsGenerator.App.CLI\RandomObjectsGenerator.App.CLI.csproj", "{CAFB81C0-BDBE-4412-BC7F-4135E5287040}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDF21983-889D-49CD-91AF-650E8BE6F7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF21983-889D-49CD-91AF-650E8BE6F7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF21983-889D-49CD-91AF-650E8BE6F7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF21983-889D-49CD-91AF-650E8BE6F7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92C1BBC-C9B5-412C-BD66-03B90EF170FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92C1BBC-C9B5-412C-BD66-03B90EF170FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92C1BBC-C9B5-412C-BD66-03B90EF170FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92C1BBC-C9B5-412C-BD66-03B90EF170FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E9C146-D12C-4DB7-8384-33FD8BCDBA42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E9C146-D12C-4DB7-8384-33FD8BCDBA42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E9C146-D12C-4DB7-8384-33FD8BCDBA42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E9C146-D12C-4DB7-8384-33FD8BCDBA42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A71D5F2-46B8-4A6A-A87C-C430D34628AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A71D5F2-46B8-4A6A-A87C-C430D34628AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A71D5F2-46B8-4A6A-A87C-C430D34628AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A71D5F2-46B8-4A6A-A87C-C430D34628AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0592BE58-1DA0-4FF0-8D0F-D1F5A850D7C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0592BE58-1DA0-4FF0-8D0F-D1F5A850D7C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0592BE58-1DA0-4FF0-8D0F-D1F5A850D7C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0592BE58-1DA0-4FF0-8D0F-D1F5A850D7C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAFB81C0-BDBE-4412-BC7F-4135E5287040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAFB81C0-BDBE-4412-BC7F-4135E5287040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAFB81C0-BDBE-4412-BC7F-4135E5287040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAFB81C0-BDBE-4412-BC7F-4135E5287040}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

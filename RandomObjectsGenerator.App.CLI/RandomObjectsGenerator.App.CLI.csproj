@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\RandomObjectsGenerator.Library.TargetModels\RandomObjectsGenerator.Library.TargetModels.csproj" />
+    <ProjectReference Include="..\RandomObjectsGenerator.Library.Core\RandomObjectsGenerator.Library.Core.csproj" />
+    <ProjectReference Include="..\RandomObjectsGenerator.Library.DatabaseContext.InMemory\RandomObjectsGenerator.Library.DatabaseContext.InMemory.csproj" />
+    <ProjectReference Include="..\RandomObjectsGenerator.Library.Serialization\RandomObjectsGenerator.Library.Serialization.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
