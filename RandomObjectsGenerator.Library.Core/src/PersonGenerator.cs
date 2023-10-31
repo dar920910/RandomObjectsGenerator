@@ -72,14 +72,38 @@ public static class PersonGenerator
         string personFirstName = GetRandomFirstNamePlaceholder(personGender);
         string personLastName = GetRandomLastNamePlaceholder();
 
-        string[] personCreditCards = GetRandomCreditCardsNumbers();
+        string[] creditCardsNumbers = GetRandomCreditCardsNumbers();
+        List<CreditCard> personCreditCards = new ();
+        foreach (var cardNumber in creditCardsNumbers)
+        {
+            CreditCard creditCard = new ()
+            {
+                OwnerFullName = personFirstName + " " + personLastName,
+                NumericID = cardNumber,
+            };
+
+            personCreditCards.Add(creditCard);
+        }
+
         string[] personPhones = GetRandomPhoneNumbers();
+        List<PhoneNumber> personPhoneNumbers = new ();
+        foreach (var phoneNumber in personPhones)
+        {
+            PhoneNumber phone = new ()
+            {
+                OwnerFullName = personFirstName + " " + personLastName,
+                NumericCode = phoneNumber,
+            };
+
+            personPhoneNumbers.Add(phone);
+        }
+
         decimal personSalary = GetRandomMonthlySalarySizeInRussianRubles();
 
         bool isMarriedPerson = GetRandomBooleanValue();
 
         byte personChildrenCount = GetRandomChildrenCount();
-        Child[] personChildren = GetRandomChildren(personChildrenCount, personLastName);
+        List<Child> personChildren = GetRandomChildren(personChildrenCount, personLastName);
 
         return new Person()
         {
@@ -94,7 +118,7 @@ public static class PersonGenerator
             LastName = personLastName,
 
             CreditCardNumbers = personCreditCards,
-            Phones = personPhones,
+            Phones = personPhoneNumbers,
             Salary = personSalary,
             TransportId = Guid.NewGuid(),
 
@@ -103,7 +127,7 @@ public static class PersonGenerator
         };
     }
 
-    private static Child[] GetRandomChildren(byte count, string parentLastName)
+    private static List<Child> GetRandomChildren(byte count, string parentLastName)
     {
         List<Child> chilren = new ();
 
@@ -118,7 +142,7 @@ public static class PersonGenerator
 
             Child child = new ()
             {
-                Id = childNumber,
+                Id = Guid.NewGuid().GetHashCode(),
                 Gender = childGender,
                 BirthDate = childBirthDate,
                 LastName = parentLastName,
@@ -128,7 +152,7 @@ public static class PersonGenerator
             chilren.Add(child);
         }
 
-        return chilren.ToArray();
+        return chilren;
     }
 
     private static byte GetRandomAdultAgeInYears(Gender gender)
@@ -171,9 +195,26 @@ public static class PersonGenerator
         const int calendarLastMonthDayIndex = 31;
         int birthDay = Random.Shared.Next(calendarFirstMonthDayIndex, calendarLastMonthDayIndex + 1);
 
-        DateTime birthDate = new (birthYear, birthMonth, birthDay);
+        DateTime birthDate = GetValidDateTime(birthYear, birthMonth, birthDay);
         DateTimeOffset dateTimeOffset = new (birthDate);
         return dateTimeOffset.ToUnixTimeSeconds();
+    }
+
+    private static DateTime GetValidDateTime(int randomYear, int randomMonth, int randomDay)
+    {
+        DateTime validDateTime;
+
+        try
+        {
+            validDateTime = new DateTime(year: randomYear, month: randomMonth, day: randomDay);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            int validDayNumber = randomMonth--;
+            validDateTime = GetValidDateTime(randomYear, randomMonth, validDayNumber);
+        }
+
+        return validDateTime;
     }
 
     private static bool GetRandomBooleanValue()

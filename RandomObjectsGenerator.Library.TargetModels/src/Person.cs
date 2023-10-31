@@ -7,6 +7,8 @@
 
 namespace RandomObjectsGenerator.Library.TargetModels;
 
+using System.ComponentModel.DataAnnotations;
+
 /// <summary>
 /// Represents a person with generally known social characteristics.
 /// </summary>
@@ -23,8 +25,9 @@ public class Person
     public int SequenceId { get; set; }
 
     /// <summary>
-    /// Gets or sets the GUID for person's transport vehicle.
+    /// Gets or sets the GUID for person's entity tracking by EF Core.
     /// </summary>
+    [Key]
     public Guid TransportId { get; set; }
 
     /// <summary>
@@ -55,12 +58,12 @@ public class Person
     /// <summary>
     /// Gets or sets the numbers of credit cards owned by the person.
     /// </summary>
-    public string[] CreditCardNumbers { get; set; }
+    public List<CreditCard> CreditCardNumbers { get; set; }
 
     /// <summary>
     /// Gets or sets the phone numbers owned by the person.
     /// </summary>
-    public string[] Phones { get; set; }
+    public List<PhoneNumber> Phones { get; set; }
 
     /// <summary>
     /// Gets or sets person's monthly salary size in Russian rubles.
@@ -75,7 +78,23 @@ public class Person
     /// <summary>
     /// Gets or sets person's children.
     /// </summary>
-    public Child[] Children { get; set; }
+    public List<Child> Children { get; set; }
+}
+
+public record CreditCard
+{
+    [Key]
+    public string NumericID { get; set; }
+
+    public string OwnerFullName { get; set; }
+}
+
+public record PhoneNumber
+{
+    [Key]
+    public string NumericCode { get; set; }
+
+    public string OwnerFullName { get; set; }
 }
 
 /// <summary>
@@ -86,6 +105,7 @@ public class Child
     /// <summary>
     /// Gets or sets the unique numeric identifier of the child.
     /// </summary>
+    [Key]
     public int Id { get; set; }
 
     /// <summary>
