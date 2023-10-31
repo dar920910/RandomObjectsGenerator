@@ -4,6 +4,41 @@ This tool implements a generator of random objects by its predefined models and 
 
 ---
 
+## :beginner: Quick Start
+
+Run the program from the command-line with the **count** argument according the following format:
+
+    <EXECUTABLE> --count=<*your count of Person objects to generate*>
+
+**Possible Parameters:**
+
+**--count**
+This parameter sets the custom count of objects which are instances of the Person class.
+If this parameter is skipped, the count equals the default value (10 000 objects).
+Possible values are limited by valid values within the range of the [System.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32?view=net-6.0) integer type.
+
+**Command Examples:**
+
+**Example 1:** Generate 10 000 person objects (by default, according project's requirements):
+
+Variant 1:
+
+    dotnet run
+
+Variant 2:
+
+    ./RandomObjectsGenerator.App.CLI
+
+**Example 2:** Generate 100 person objects (less than the default value):
+
+    ./RandomObjectsGenerator.App.CLI --count=100
+
+**Example 3:** Generate 100 000 person objects (more than the default value):
+
+    ./RandomObjectsGenerator.App.CLI --count=100000
+
+---
+
 ## :triangular_ruler: Explore This Software Architecture Solution
 
 This solution implements the software architecture design based on the following related projects:
