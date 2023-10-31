@@ -13,7 +13,12 @@ const int targetCountOfObjects = 10;
 const string targetOutputFileName = "Persons.txt";
 
 WriteLine($"Step # 1: Creating a collection from {targetCountOfObjects} randomly generated Person objects in memory ...");
-Person[] persons = PersonGenerator.GenerateTestObjects(targetCountOfObjects);
+List<Person> persons = new ();
+for (int personIndex = 0; personIndex < targetCountOfObjects; personIndex++)
+{
+    Person person = PersonGenerator.CreateRandomPerson(personIndex);
+    persons.Add(person);
+}
 
 WriteLine("Step # 2: Serializing the collection to the JSON format ...");
 
