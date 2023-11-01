@@ -65,13 +65,4 @@ foreach (Person person in persons)
 
 WriteLine();
 
-WriteLine("Printing persons' count, credit card count, and the average values of child age ...");
-foreach (Person person in persons)
-{
-    WriteLine("---------------------------------------------------------------------------");
-    WriteLine($"Person # {person.Id}: {person.FirstName} {person.LastName}");
-    WriteLine($"   Credit Cards: {person.CreditCardNumbers.Count}");
-    WriteLine($"   Average Age of Children: {person.GetChildrenAverageAgeInYears()}");
-}
-
-WriteLine();
+PrintPersonCollectionSummaryInfo(persons);
