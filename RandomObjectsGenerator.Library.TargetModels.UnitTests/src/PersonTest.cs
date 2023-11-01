@@ -46,22 +46,35 @@ public class PersonTest
     }
 
     /// <summary>
-    /// Checks the average age of person's children.
+    /// Checks the average age of person's children when the person has several children.
     /// </summary>
     [Fact]
-    public void GetAverageAgeOfChildrenTest()
+    public void GetAverageAgeOfChildrenWhenPersonHasSeveralChildren()
     {
-        this.testPerson.Children = new ()
+        this.testPerson.Children = new List<Child>()
         {
             new (id: 1, gender: Gender.Male, birthDateTime: new DateTime(year: 1993, 5, 5), lastName: TestLastName, firstName: "ChildName_1"),
             new (id: 2, gender: Gender.Female, birthDateTime: new DateTime(year: 2003, 7, 7), lastName: TestLastName, firstName: "ChildName_2"),
             new (id: 3, gender: Gender.Male, birthDateTime: new DateTime(year: 2013, 9, 9), lastName: TestLastName, firstName: "ChildName_3"),
         };
 
-        byte expectedAverageAgeInYears = 20;
         byte actualAverageAgeInYears = this.testPerson.GetChildrenAverageAgeInYears();
+        Assert.Equal(expected: 20, actual: actualAverageAgeInYears);
+    }
 
-        Assert.Equal(expectedAverageAgeInYears, actualAverageAgeInYears);
+    /// <summary>
+    /// Checks the average age of person's children when the person has one child.
+    /// </summary>
+    [Fact]
+    public void GetAverageAgeOfChildrenWhenPersonHasOneChild()
+    {
+        this.testPerson.Children = new List<Child>()
+        {
+            new (id: 1, gender: Gender.Female, birthDateTime: new DateTime(year: 2020, 6, 1), lastName: TestLastName, firstName: "ChildName"),
+        };
+
+        byte actualAverageAgeInYears = this.testPerson.GetChildrenAverageAgeInYears();
+        Assert.Equal(expected: 3, actual: actualAverageAgeInYears);
     }
 
     /// <summary>
