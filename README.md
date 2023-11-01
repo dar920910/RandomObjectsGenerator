@@ -1,6 +1,10 @@
-# Random Objects Generator
+# Random Objects Generator for Persons :two_men_holding_hands:
 
-This tool implements a generator of random objects by its predefined models and uses JSON serialization to save created objects.
+This tool implements a generator of random objects by its predefined models.
+
+The tool uses JSON serialization as a persistance storage for its created objects.
+
+Currently, the tool supports only generating objects of the **Person** type.
 
 ---
 
@@ -27,11 +31,11 @@ Possible values are limited by valid values within the range of the [System.UInt
 
 **Example 1:** Generate 10 000 person objects (by default, according project's requirements):
 
-Variant 1:
+**Variant 1:** Launch the program via the **dotnet** command-line tool
 
     dotnet run
 
-Variant 2:
+**Variant 2:** Launch the program via its executable directly
 
     ./RandomObjectsGenerator.App.CLI
 
@@ -49,12 +53,35 @@ Variant 2:
 
 This solution implements the software architecture design based on the following related projects:
 
-- **RandomObjectsGenerator.Library.TargetModels** - this class library contains definitions of target models for the generator of random objects.
-- **RandomObjectsGenerator.Library.TargetModels.UnitTests** - this project contains unit tests for target models used by the generator of random objects.
-- **RandomObjectsGenerator.Library.Core** - this class library contains the implementation of core features for the generator of random objects.
-- **RandomObjectsGenerator.Library.DatabaseContext.InMemory** - this class library implements the context of the in-memory database for the storage of generated objects.
-- **RandomObjectsGenerator.Library.Serialization** - this class library contains implementations of serialization devices for using into the project.
-- **RandomObjectsGenerator.App.CLI** - this console application implements the command-line interface for the generator of random objects.
+### :pushpin: Application
+
+#### :open_file_folder: RandomObjectsGenerator.App.CLI
+
+This console application implements the command-line interface for the generator of random objects.
+
+### :pushpin: Class Libraries
+
+#### :open_file_folder: RandomObjectsGenerator.Library.Core
+
+This class library contains the implementation of core features for the generator of random objects.
+
+#### :open_file_folder: RandomObjectsGenerator.Library.DatabaseContext.InMemory
+
+This class library implements the context of the in-memory database for the storage of generated objects.
+
+#### :open_file_folder: RandomObjectsGenerator.Library.Serialization
+
+This class library contains implementations of serialization devices for using into the project.
+
+#### :open_file_folder: RandomObjectsGenerator.Library.TargetModels
+
+This class library contains definitions of target models for the generator of random objects.
+
+### :pushpin: Unit Testing
+
+#### :open_file_folder: RandomObjectsGenerator.Library.TargetModels.UnitTests
+
+This project contains unit tests for target models used by the generator of random objects.
 
 ---
 
