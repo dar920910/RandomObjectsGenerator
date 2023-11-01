@@ -9,41 +9,58 @@ using RandomObjectsGenerator.Library.Core;
 using RandomObjectsGenerator.Library.DatabaseContext.InMemory;
 using RandomObjectsGenerator.Library.Serialization;
 using RandomObjectsGenerator.Library.TargetModels;
-using static System.Console;
 
 uint targetCountOfObjects = RetrieveTargetCountParameterValueFromCommandLineArguments(args);
-
-WriteLine($"Creating a collection from {targetCountOfObjects} randomly generated Person objects in memory ...");
 DatabaseContext databaseInMemory = new ();
-for (int personIndex = 0; personIndex < targetCountOfObjects; personIndex++)
-{
-    Person person = PersonGenerator.CreateRandomPerson(personIndex);
-    databaseInMemory.Persons.Add(person);
-}
 
-databaseInMemory.SaveChanges();
-WriteLine();
+CreateRandomPersonsIntoInMemoryStorage(targetCountOfObjects, databaseInMemory);
 
-WriteLine("Serializing the collection to the JSON format ...");
-SerializationManager.SaveToJsonTextFile(databaseInMemory.Persons.ToList());
-WriteLine();
+SerializePersonsFromInMemoryStorage(databaseInMemory);
 
-WriteLine("Clearing the collection from the database in-memory ...");
-foreach (var person in databaseInMemory.Persons)
-{
-    databaseInMemory.Persons.Remove(person);
-}
+RemoveAllPersonsFromInMemoryStorage(databaseInMemory);
 
-databaseInMemory.SaveChanges();
-WriteLine();
-
-WriteLine("Reading serialized objects from the JSON text file");
-List<Person> persons = SerializationManager.ReadFromJsonTextFile();
-foreach (Person person in persons)
-{
-    WriteLine($"Person {person.Id}: '{person.FirstName} {person.LastName}'");
-}
-
-WriteLine();
+List<Person> persons = DeserializePersonsFromJsonTextFile();
 
 PrintPersonCollectionSummaryInfo(persons);
+
+void CreateRandomPersonsIntoInMemoryStorage(uint countOfPersons, DatabaseContext storageOfPersons)
+{
+    Console.WriteLine($"Creating a collection from {countOfPersons} randomly generated Person objects in memory ...");
+
+    for (int personIndex = 0; personIndex < targetCountOfObjects; personIndex++)
+    {
+        Person person = PersonGenerator.CreateRandomPerson(personIndex);
+        storageOfPersons.Persons.Add(person);
+    }
+
+    storageOfPersons.SaveChanges();
+    Console.WriteLine();
+}
+
+void SerializePersonsFromInMemoryStorage(DatabaseContext storageOfPersons)
+{
+    Console.WriteLine("Serializing the collection to the JSON format ...");
+    SerializationManager.SaveToJsonTextFile(storageOfPersons.Persons.ToList());
+    Console.WriteLine();
+}
+
+void RemoveAllPersonsFromInMemoryStorage(DatabaseContext storageOfPersons)
+{
+    Console.WriteLine("Clearing the collection from the database in-memory ...");
+
+    foreach (var person in storageOfPersons.Persons)
+    {
+        storageOfPersons.Persons.Remove(person);
+    }
+
+    storageOfPersons.SaveChanges();
+    Console.WriteLine();
+}
+
+List<Person> DeserializePersonsFromJsonTextFile()
+{
+    Console.WriteLine("Reading serialized objects from the JSON text file");
+    Console.WriteLine();
+
+    return SerializationManager.ReadFromJsonTextFile();
+}
