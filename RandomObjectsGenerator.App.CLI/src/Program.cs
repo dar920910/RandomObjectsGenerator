@@ -11,26 +11,7 @@ using RandomObjectsGenerator.Library.Serialization;
 using RandomObjectsGenerator.Library.TargetModels;
 using static System.Console;
 
-const string customCountOfObjectsParameter = "--count=";
-const uint defaultCountOfObjects = 10_000;
-
-uint targetCountOfObjects = defaultCountOfObjects;
-
-if (args.Length > 0)
-{
-    foreach (string arg in args)
-    {
-        if (arg.StartsWith(customCountOfObjectsParameter))
-        {
-            string value = arg.Replace(customCountOfObjectsParameter, string.Empty);
-
-            if (uint.TryParse(value, out uint result))
-            {
-                targetCountOfObjects = result;
-            }
-        }
-    }
-}
+uint targetCountOfObjects = RetrieveTargetCountParameterValueFromCommandLineArguments(args);
 
 WriteLine($"Creating a collection from {targetCountOfObjects} randomly generated Person objects in memory ...");
 DatabaseContext databaseInMemory = new ();
