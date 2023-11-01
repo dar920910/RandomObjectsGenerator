@@ -79,6 +79,23 @@ public class Person
     /// Gets or sets person's children.
     /// </summary>
     public List<Child> Children { get; set; }
+
+    /// <summary>
+    /// Gets the average age of person's children in years.
+    /// </summary>
+    /// <returns>The average age in years.</returns>
+    public byte GetChildrenAverageAgeInYears()
+    {
+        int childrenSummaryAge = 0;
+
+        foreach (Child child in this.Children)
+        {
+            childrenSummaryAge += child.GetAgeInYears();
+        }
+
+        int averageAge = childrenSummaryAge / this.Children.Count;
+        return Convert.ToByte(averageAge);
+    }
 }
 
 public record CreditCard
@@ -103,20 +120,39 @@ public record PhoneNumber
 public class Child
 {
     /// <summary>
+    /// Initializes a new instance of the <see cref="Child"/> class.
+    /// </summary>
+    public Child()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Child"/> class.
+    /// </summary>
+    /// <param name="id">Child's ID.</param>
+    /// <param name="gender">Child's gender.</param>
+    /// <param name="birthDateTime">Child's birth date and time.</param>
+    /// <param name="lastName">Child's last name.</param>
+    /// <param name="firstName">Child's first name.</param>
+    public Child(int id, Gender gender, DateTime birthDateTime, string lastName, string firstName)
+    {
+        this.Id = id;
+        this.Gender = gender;
+        this.BirthDate = new DateTimeOffset(birthDateTime).ToUnixTimeSeconds();
+        this.LastName = lastName;
+        this.FirstName = firstName;
+    }
+
+    /// <summary>
     /// Gets or sets the unique numeric identifier of the child.
     /// </summary>
     [Key]
     public int Id { get; set; }
 
     /// <summary>
-    /// Gets or sets the first name of the child.
+    /// Gets or sets the gender of the child.
     /// </summary>
-    public string FirstName { get; set; }
-
-    /// <summary>
-    /// Gets or sets the last name of the child.
-    /// </summary>
-    public string LastName { get; set; }
+    public Gender Gender { get; set; }
 
     /// <summary>
     /// Gets or sets child's birth date in the POSIX format.
@@ -124,9 +160,25 @@ public class Child
     public long BirthDate { get; set; }
 
     /// <summary>
-    /// Gets or sets the gender of the child.
+    /// Gets or sets the last name of the child.
     /// </summary>
-    public Gender Gender { get; set; }
+    public string LastName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the first name of the child.
+    /// </summary>
+    public string FirstName { get; set; }
+
+    /// <summary>
+    /// Gets child's age in years.
+    /// </summary>
+    /// <returns>Child's age in years.</returns>
+    public byte GetAgeInYears()
+    {
+        DateTimeOffset birthDateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(this.BirthDate);
+        int differenceInYears = DateTime.Now.Year - birthDateTimeOffset.Year;
+        return Convert.ToByte(differenceInYears);
+    }
 }
 
 /// <summary>
