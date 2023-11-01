@@ -35,7 +35,5 @@ public class DatabaseContext : DbContext
     /// <param name="modelBuilder">The builder for models used by the database context.</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //modelBuilder.Entity<CreditCard>().HasNoKey();
-        //modelBuilder.Entity<PhoneNumber>().HasNoKey();
     }
 }
