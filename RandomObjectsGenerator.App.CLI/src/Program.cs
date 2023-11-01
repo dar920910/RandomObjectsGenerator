@@ -10,17 +10,18 @@ using RandomObjectsGenerator.Library.DatabaseContext.InMemory;
 using RandomObjectsGenerator.Library.Serialization;
 using RandomObjectsGenerator.Library.TargetModels;
 
+// Generate random Person collection and save it to the database in-memory.
 uint targetCountOfObjects = RetrieveTargetCountParameterValueFromCommandLineArguments(args);
 DatabaseContext databaseInMemory = new ();
-
 CreateRandomPersonsIntoInMemoryStorage(targetCountOfObjects, databaseInMemory);
 
-SerializePersonsFromInMemoryStorage(databaseInMemory);
-
+// Write this Person collection to the JSON file and then remove it from the database in-memory.
+string personsJsonFilePath = GetPersonsOutputFilePathByDefault();
+SerializePersonsToJsonTextFile(databaseInMemory, personsJsonFilePath);
 RemoveAllPersonsFromInMemoryStorage(databaseInMemory);
 
-List<Person> persons = DeserializePersonsFromJsonTextFile();
-
+// Read the serialized Person collection from the JSON file and then print its summary info to console.
+List<Person> persons = DeserializePersonsFromJsonTextFile(personsJsonFilePath);
 PrintPersonCollectionSummaryInfo(persons);
 
 void CreateRandomPersonsIntoInMemoryStorage(uint countOfPersons, DatabaseContext storageOfPersons)
@@ -37,13 +38,6 @@ void CreateRandomPersonsIntoInMemoryStorage(uint countOfPersons, DatabaseContext
     Console.WriteLine();
 }
 
-void SerializePersonsFromInMemoryStorage(DatabaseContext storageOfPersons)
-{
-    Console.WriteLine("Serializing the collection to the JSON format ...");
-    SerializationManager.SaveToJsonTextFile(storageOfPersons.Persons.ToList());
-    Console.WriteLine();
-}
-
 void RemoveAllPersonsFromInMemoryStorage(DatabaseContext storageOfPersons)
 {
     Console.WriteLine("Clearing the collection from the database in-memory ...");
@@ -57,10 +51,31 @@ void RemoveAllPersonsFromInMemoryStorage(DatabaseContext storageOfPersons)
     Console.WriteLine();
 }
 
-List<Person> DeserializePersonsFromJsonTextFile()
+void SerializePersonsToJsonTextFile(DatabaseContext storageOfPersons, string filePath)
 {
-    Console.WriteLine("Reading serialized objects from the JSON text file");
+    Console.WriteLine("Serializing the collection to the JSON format ...");
+    SerializationManager.SaveToJsonTextFile(storageOfPersons.Persons.ToList(), filePath);
+    Console.WriteLine();
+}
+
+List<Person> DeserializePersonsFromJsonTextFile(string filePath)
+{
+    Console.WriteLine("Reading serialized objects from the JSON text file ...");
     Console.WriteLine();
 
-    return SerializationManager.ReadFromJsonTextFile();
+    List<Person> persons;
+
+    if (File.Exists(filePath))
+    {
+        persons = SerializationManager.ReadFromJsonTextFile(filePath);
+        Console.WriteLine($"Success: Finished deserialization from the JSON file: '{filePath}'");
+    }
+    else
+    {
+        Console.WriteLine("Error: Cannot deserialize non-existing file !");
+        persons = new List<Person>();
+    }
+
+    Console.WriteLine();
+    return persons;
 }

@@ -16,19 +16,16 @@ using RandomObjectsGenerator.Library.TargetModels;
 /// </summary>
 public static class SerializationManager
 {
-    private const string OutputPersonsFileName = "Persons.json";
-
     /// <summary>
     /// Saves the specified Person objects to the JSON text file.
     /// </summary>
+    /// <param name="filePath">The path to the target JSON text file.</param>
     /// <returns>The list of objects which are read as instances of the Person class.</returns>
-    public static List<Person> ReadFromJsonTextFile()
+    public static List<Person> ReadFromJsonTextFile(string filePath)
     {
-        string outputFilePath = GetOutputPersonsFilePath();
-
         List<Person> persons = new ();
 
-        using (StreamReader stream = File.OpenText(outputFilePath))
+        using (StreamReader stream = File.OpenText(filePath))
         {
             JsonSerializer serializer = new ();
             persons = (List<Person>)serializer.Deserialize(stream, typeof(List<Person>));
@@ -41,11 +38,10 @@ public static class SerializationManager
     /// Saves the specified Person objects to the JSON text file.
     /// </summary>
     /// <param name="collection">The list of objects which are instances of the Person class.</param>
-    public static void SaveToJsonTextFile(List<Person> collection)
+    /// <param name="filePath">The path to the target JSON text file.</param>
+    public static void SaveToJsonTextFile(List<Person> collection, string filePath)
     {
-        string outputFilePath = GetOutputPersonsFilePath();
-
-        using (StreamWriter stream = File.CreateText(outputFilePath))
+        using (StreamWriter stream = File.CreateText(filePath))
         {
             DefaultContractResolver contractResolver = new ()
             {
@@ -63,13 +59,5 @@ public static class SerializationManager
 
             stream.WriteLine(json);
         }
-    }
-
-    private static string GetOutputPersonsFilePath()
-    {
-        string outputFolderPath = (Environment.OSVersion.Platform == PlatformID.Win32NT) ?
-            Environment.GetFolderPath(Environment.SpecialFolder.Desktop) : Environment.CurrentDirectory;
-
-        return Path.Combine(outputFolderPath, OutputPersonsFileName);
     }
 }
