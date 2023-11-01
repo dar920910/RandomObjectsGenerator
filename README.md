@@ -6,18 +6,24 @@ This tool implements a generator of random objects by its predefined models and 
 
 ## :beginner: Quick Start
 
-Run the program from the command-line with the **count** argument according the following format:
+Run the console application from the command-line with the **count** argument according the following format:
 
-    <EXECUTABLE> --count=<*your count of Person objects to generate*>
+    <EXECUTABLE> --count={your count of Person objects to generate}
 
-**Possible Parameters:**
+The output **Persons.json** JSON file with generated objects are in the following directory:
 
-**--count**
+- **Windows:** the the current user's desktop folder (for example, "C:\Users\\dar920920\Desktop")
+- **Unix-based OS:** the current directory of the application
+
+### **Possible Parameters:**
+
+#### --count
+
 This parameter sets the custom count of objects which are instances of the Person class.
 If this parameter is skipped, the count equals the default value (10 000 objects).
 Possible values are limited by valid values within the range of the [System.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32?view=net-6.0) integer type.
 
-**Command Examples:**
+### Command Examples
 
 **Example 1:** Generate 10 000 person objects (by default, according project's requirements):
 
@@ -63,8 +69,21 @@ This program can be built and launched into the Docker container via provided **
 
 ---
 
-## :wrench: Build This Project from Source Code
+## :wrench: Build-Test-Run This Project from Source Code
 
-Use **.NET 6 SDK** to build this project from source code.
+This project should be built from source code via [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0):
+
+**Build the Project:**
+
+    dotnet build
+
+**Run Unit Tests:**
+
+    dotnet test
+
+**Run the Application:**
+
+    cd ./RandomObjectsGenerator.App.CLI
+    dotnet run
 
 ---
