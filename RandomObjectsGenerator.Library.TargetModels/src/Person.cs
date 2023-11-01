@@ -86,8 +86,12 @@ public class Person
     /// <returns>The average age in years.</returns>
     public byte GetChildrenAverageAgeInYears()
     {
-        int childrenSummaryAge = 0;
+        if (this.Children.Count == 0)
+        {
+            return 0;
+        }
 
+        int childrenSummaryAge = 0;
         foreach (Child child in this.Children)
         {
             childrenSummaryAge += child.GetAgeInYears();

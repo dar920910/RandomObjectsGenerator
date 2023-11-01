@@ -77,4 +77,15 @@ public class PersonTest
 
         Assert.Equal(expectedAverageAgeInYears, actualAverageAgeInYears);
     }
+
+    /// <summary>
+    /// Checks the average age of person's children when the person has no children.
+    /// </summary>
+    [Fact]
+    public void GetAverageAgeOfChildrenWhenPersonHasNoChildren()
+    {
+        this.testPerson.Children = new List<Child>();
+        byte childrenAverageAgeInYears = this.testPerson.GetChildrenAverageAgeInYears();
+        Assert.Equal(expected: 0, actual: childrenAverageAgeInYears);
+    }
 }
