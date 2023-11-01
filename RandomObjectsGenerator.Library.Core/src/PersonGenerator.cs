@@ -30,42 +30,18 @@ public static partial class PersonGenerator
     {
         bool isFemale = GetRandomBooleanValue();
         Gender personGender = isFemale ? Gender.Female : Gender.Male;
+
         byte personAge = GetRandomAdultAgeInYears(personGender);
         long personBirthDate = GetRandomBirthDate(personAge);
 
         string personFirstName = GetRandomFirstNamePlaceholder(personGender);
         string personLastName = GetRandomLastNamePlaceholder();
 
-        string[] creditCardsNumbers = GetRandomCreditCardsNumbers();
-        List<CreditCard> personCreditCards = new ();
-        foreach (var cardNumber in creditCardsNumbers)
-        {
-            CreditCard creditCard = new ()
-            {
-                OwnerFullName = personFirstName + " " + personLastName,
-                NumericID = cardNumber,
-            };
-
-            personCreditCards.Add(creditCard);
-        }
-
-        string[] personPhones = GetRandomPhoneNumbers();
-        List<PhoneNumber> personPhoneNumbers = new ();
-        foreach (var phoneNumber in personPhones)
-        {
-            PhoneNumber phone = new ()
-            {
-                OwnerFullName = personFirstName + " " + personLastName,
-                NumericCode = phoneNumber,
-            };
-
-            personPhoneNumbers.Add(phone);
-        }
-
+        List<CreditCard> personCreditCards = GetRandomCreditCards(personFirstName, personLastName);
+        List<PhoneNumber> personPhoneNumbers = GetPersonPhoneNumbers(personFirstName, personLastName);
         decimal personSalary = GetRandomMonthlySalarySizeInRussianRubles();
 
         bool isMarriedPerson = GetRandomBooleanValue();
-
         byte personChildrenCount = GetRandomChildrenCount();
         List<Child> personChildren = GetRandomChildren(personChildrenCount, personLastName);
 

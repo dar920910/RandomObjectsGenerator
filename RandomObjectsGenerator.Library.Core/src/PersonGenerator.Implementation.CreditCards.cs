@@ -14,7 +14,26 @@ using RandomObjectsGenerator.Library.TargetModels;
 /// </summary>
 public static partial class PersonGenerator
 {
-    private static string[] GetRandomCreditCardsNumbers()
+    private static List<CreditCard> GetRandomCreditCards(string personFirstName, string personLastName)
+    {
+        List<CreditCard> personCreditCards = new ();
+
+        string[] creditCardsNumbers = GetRandomCardNumbers();
+        foreach (var cardNumber in creditCardsNumbers)
+        {
+            CreditCard creditCard = new ()
+            {
+                OwnerFullName = $"{personFirstName} {personLastName}",
+                NumericID = cardNumber,
+            };
+
+            personCreditCards.Add(creditCard);
+        }
+
+        return personCreditCards;
+    }
+
+    private static string[] GetRandomCardNumbers()
     {
         const byte minumumCreditCardsCount = 1;
         const byte maximumCreditCardsCount = 10;

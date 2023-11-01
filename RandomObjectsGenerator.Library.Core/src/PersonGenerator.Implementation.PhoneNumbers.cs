@@ -14,7 +14,26 @@ using RandomObjectsGenerator.Library.TargetModels;
 /// </summary>
 public static partial class PersonGenerator
 {
-    private static string[] GetRandomPhoneNumbers()
+    private static List<PhoneNumber> GetPersonPhoneNumbers(string personFirstName, string personLastName)
+    {
+        List<PhoneNumber> personPhoneNumbers = new ();
+
+        string[] randomPhones = GetRandomPhones();
+        foreach (var phoneNumber in randomPhones)
+        {
+            PhoneNumber phone = new ()
+            {
+                OwnerFullName = $"{personFirstName} {personLastName}",
+                NumericCode = phoneNumber,
+            };
+
+            personPhoneNumbers.Add(phone);
+        }
+
+        return personPhoneNumbers;
+    }
+
+    private static string[] GetRandomPhones()
     {
         const byte minumumPhonesCount = 1;
         const byte maximumPhonesCount = 10;
@@ -25,14 +44,14 @@ public static partial class PersonGenerator
 
         for (int phoneIndex = 0; phoneIndex < creditCardsCount; phoneIndex++)
         {
-            string phone = GetRandomPhone();
+            string phone = GenerateRandomPhone();
             phones.Add(phone);
         }
 
         return phones.ToArray();
     }
 
-    private static string GetRandomPhone()
+    private static string GenerateRandomPhone()
     {
         byte phoneDigit_00 = GetRandomDigit();
         byte phoneDigit_01 = GetRandomDigit();
