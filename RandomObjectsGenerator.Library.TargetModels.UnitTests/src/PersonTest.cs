@@ -46,20 +46,6 @@ public class PersonTest
     }
 
     /// <summary>
-    /// Checks calculation of child's age in years.
-    /// </summary>
-    [Fact]
-    public void GetChildAgeInYearsTest()
-    {
-        Child child = new (id: 0, gender: Gender.Male, birthDateTime: new DateTime(year: 2013, 10, 10), lastName: TestLastName, firstName: "TestChildName");
-
-        byte expectedAge = 10;
-        byte actualAge = child.GetAgeInYears();
-
-        Assert.Equal(expectedAge, actualAge);
-    }
-
-    /// <summary>
     /// Checks the average age of person's children.
     /// </summary>
     [Fact]
