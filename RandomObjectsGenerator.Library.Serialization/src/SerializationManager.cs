@@ -1,9 +1,9 @@
-﻿//---------------------------------------------------------------------------
+﻿// ---------------------------------------------------------------------------------------------------------
 // <copyright file="SerializationManager.cs" company="Demo Projects Workshop">
 // Copyright (c) Demo Projects Workshop. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 // </copyright>
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 namespace RandomObjectsGenerator.Library.Serialization;
 
@@ -17,10 +17,10 @@ using RandomObjectsGenerator.Library.TargetModels;
 public static class SerializationManager
 {
     /// <summary>
-    /// Saves the specified Person objects to the JSON text file.
+    /// Saves the specified <see cref="Person"/> objects to the JSON text file.
     /// </summary>
     /// <param name="filePath">The path to the target JSON text file.</param>
-    /// <returns>The list of objects which are read as instances of the Person class.</returns>
+    /// <returns>The list of objects which are read as instances of the <see cref="Person"/> class.</returns>
     public static List<Person> ReadFromJsonTextFile(string filePath)
     {
         List<Person> persons = new ();
@@ -35,9 +35,9 @@ public static class SerializationManager
     }
 
     /// <summary>
-    /// Saves the specified Person objects to the JSON text file.
+    /// Saves the specified <see cref="Person"/> objects to the JSON text file.
     /// </summary>
-    /// <param name="collection">The list of objects which are instances of the Person class.</param>
+    /// <param name="collection">The list of objects which are instances of the <see cref="Person"/> class.</param>
     /// <param name="filePath">The path to the target JSON text file.</param>
     public static void SaveToJsonTextFile(List<Person> collection, string filePath)
     {

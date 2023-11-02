@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 // <copyright file="Child.cs" company="Demo Projects Workshop">
 // Copyright (c) Demo Projects Workshop. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 // </copyright>
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 namespace RandomObjectsGenerator.Library.TargetModels;
 
@@ -31,6 +31,7 @@ public class Child
     /// <param name="firstName">Child's first name.</param>
     public Child(int id, Gender gender, DateTime birthDateTime, string lastName, string firstName)
     {
+        this.Guid = Guid.NewGuid();
         this.Id = id;
         this.Gender = gender;
         this.BirthDate = new DateTimeOffset(birthDateTime).ToUnixTimeSeconds();
@@ -39,9 +40,14 @@ public class Child
     }
 
     /// <summary>
-    /// Gets or sets the unique numeric identifier of the child.
+    /// Gets or sets the GUID for child's entity tracking by EF Core.
     /// </summary>
     [Key]
+    public Guid Guid { get; set; }
+
+    /// <summary>
+    /// Gets or sets the unique numeric identifier of the child.
+    /// </summary>
     public int Id { get; set; }
 
     /// <summary>

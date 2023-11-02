@@ -8,7 +8,7 @@
                 "licenseName": "MIT",
                 "licenseFile": "LICENSE.md"
             },
-            "headerDecoration": "---------------------------------------------------------------------------"
+            "headerDecoration": "---------------------------------------------------------------------------------------------------------"
         },
         "orderingRules": {
             "usingDirectivesPlacement": "outsideNamespace"

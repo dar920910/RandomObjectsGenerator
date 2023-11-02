@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 // <copyright file="PersonGenerator.Implementation.AgeAndDates.cs" company="Demo Projects Workshop">
 // Copyright (c) Demo Projects Workshop. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 // </copyright>
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 namespace RandomObjectsGenerator.Library.Core;
 
@@ -25,8 +25,9 @@ public static partial class PersonGenerator
             int randomNumber = Random.Shared.Next(startAdultAge, retirementFemaleAge);
             return Convert.ToByte(randomNumber);
         }
-        else // Else person's gender is 'Gender.Male' (the program serves only traditional gender types).
+        else
         {
+            // Else person's gender is 'Gender.Male' (the program serves only traditional gender types).
             int randomNumber = Random.Shared.Next(startAdultAge, retirementMaleAge);
             return Convert.ToByte(randomNumber);
         }
@@ -69,10 +70,26 @@ public static partial class PersonGenerator
         }
         catch (ArgumentOutOfRangeException)
         {
-            int validDayNumber = randomMonth--;
+            /* Comments to processing the 'ArgumentOutOfRangeException' exception.
+             * The 'ArgumentOutOfRangeException' exception can be thrown when occuring anomal situations.
+             * These situations are caused by attempts to create an invalid DateTime object for dates like the 'February, 31'.
+             * If the program throws this exception, the following code will be do the following actions:
+             * 1. Generate a random day value except of the '29', '30', '31' day values from possible values.
+             * 2. Execute the recursive method call while creation of the valid DateTime object.
+            */
+
+            int validDayNumber = GetDayValueAvailableForEveryMonthInYear();
             validDateTime = GetValidDateTime(randomYear, randomMonth, validDayNumber);
         }
 
         return validDateTime;
+    }
+
+    private static int GetDayValueAvailableForEveryMonthInYear()
+    {
+        const int calendarFirstMonthDayIndex = 1;
+        const int calendarLastMonthDayIndex = 28;
+
+        return Random.Shared.Next(calendarFirstMonthDayIndex, calendarLastMonthDayIndex + 1);
     }
 }

@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 // <copyright file="Program.ResultConsoleOutput.cs" company="Demo Projects Workshop">
 // Copyright (c) Demo Projects Workshop. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 // </copyright>
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 using RandomObjectsGenerator.Library.TargetModels;
 
@@ -13,7 +13,7 @@ using RandomObjectsGenerator.Library.TargetModels;
 internal partial class Program
 {
     /// <summary>
-    /// Prints the summary information about a collection of the Person objects to console.
+    /// Prints the summary information about a collection of the <see cref="Person"/> objects to console.
     /// </summary>
     /// <param name="persons">The list of objects which are instances of the <see cref="Person"/> class.</param>
     internal static void PrintPersonCollectionSummaryInfo(List<Person> persons)
@@ -36,11 +36,5 @@ internal partial class Program
         Console.WriteLine();
     }
 
-    private static string GetDelimiterLineBetweenPersonInfo()
-    {
-        const char delimiterSymbol = '-';
-        const byte delimiterLength = 75;
-
-        return new string(delimiterSymbol, delimiterLength);
-    }
+    private static string GetDelimiterLineBetweenPersonInfo(char symbol = '-', byte length = 75) => new (symbol, length);
 }

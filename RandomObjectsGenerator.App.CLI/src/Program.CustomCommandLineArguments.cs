@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 // <copyright file="Program.CustomCommandLineArguments.cs" company="Demo Projects Workshop">
 // Copyright (c) Demo Projects Workshop. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 // </copyright>
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 /// <summary>
 /// Defines the <see cref="Program"/> class of the console application.

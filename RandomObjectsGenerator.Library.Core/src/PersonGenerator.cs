@@ -1,9 +1,9 @@
-﻿//---------------------------------------------------------------------------
+﻿// ---------------------------------------------------------------------------------------------------------
 // <copyright file="PersonGenerator.cs" company="Demo Projects Workshop">
 // Copyright (c) Demo Projects Workshop. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 // </copyright>
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 namespace RandomObjectsGenerator.Library.Core;
 
@@ -22,7 +22,7 @@ public static partial class PersonGenerator
     }
 
     /// <summary>
-    /// Generates a random instance of the Person class.
+    /// Generates a random instance of the <see cref="Person"/> class.
     /// </summary>
     /// <param name="personId">The unique identifier of the instance.</param>
     /// <returns>A randomly generated instance of the Person class.</returns>
@@ -39,7 +39,7 @@ public static partial class PersonGenerator
 
         List<CreditCard> personCreditCards = GetRandomCreditCards(personFirstName, personLastName);
         List<PhoneNumber> personPhoneNumbers = GetPersonPhoneNumbers(personFirstName, personLastName);
-        decimal personSalary = GetRandomMonthlySalarySizeInRussianRubles();
+        decimal personSalary = GetRandomMonthlySalarySizeInCurrencyUnits();
 
         bool isMarriedPerson = GetRandomBooleanValue();
         byte personChildrenCount = GetRandomChildrenCount();

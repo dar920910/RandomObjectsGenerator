@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 // <copyright file="PersonGenerator.Implementation.Children.cs" company="Demo Projects Workshop">
 // Copyright (c) Demo Projects Workshop. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 // </copyright>
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 namespace RandomObjectsGenerator.Library.Core;
 
@@ -37,7 +37,8 @@ public static partial class PersonGenerator
 
             Child child = new ()
             {
-                Id = Guid.NewGuid().GetHashCode(),
+                Guid = Guid.NewGuid(),
+                Id = childNumber,
                 Gender = childGender,
                 BirthDate = childBirthDate,
                 LastName = parentLastName,

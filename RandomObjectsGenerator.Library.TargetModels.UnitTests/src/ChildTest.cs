@@ -1,12 +1,13 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 // <copyright file="ChildTest.cs" company="Demo Projects Workshop">
 // Copyright (c) Demo Projects Workshop. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 // </copyright>
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 namespace RandomObjectsGenerator.Library.TargetModels.UnitTests;
 
+using Xunit;
 using RandomObjectsGenerator.Library.TargetModels;
 
 /// <summary>
@@ -20,8 +21,8 @@ public class ChildTest
     /// <summary>
     /// Checks calculation of child's age in years.
     /// </summary>
-    /// <param name="childBirthYear">The actual year of child's birth.</>
-    /// <param name="expectedAge">The expected age of a child.</>
+    /// <param name="childBirthYear">The actual year of child's birth.</param>
+    /// <param name="expectedAge">The expected age of a child.</param>
     [Theory]
     [InlineData(2023, 0)]
     [InlineData(2018, 5)]
