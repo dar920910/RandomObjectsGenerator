@@ -8,6 +8,20 @@ Currently, the tool supports only generating objects of the **Person** type.
 
 ---
 
+## :pencil: Project Requirements
+
+This program was created as a test project which should match employer's requirements.
+
+Initial project requirements are documented in the [REQUIREMENTS.md](REQUIREMENTS.md) file:
+
+:link: [REQUIREMENTS.md - Initial Requirements :pencil:](REQUIREMENTS.md#initial-requirements)
+
+Some requirements to implementation details were changed by me when creating the project:
+
+:link: [REQUIREMENTS.md - Changes of Initial Requirements :pencil2:](REQUIREMENTS.md#changes-of-initial-requirements)
+
+---
+
 ## :beginner: Quick Start
 
 Run the console application from the command-line with the **count** argument according the following format:
@@ -24,7 +38,9 @@ The output **Persons.json** JSON file with generated objects are in the followin
 #### --count
 
 This parameter sets the custom count of objects which are instances of the Person class.
+
 If this parameter is skipped, the count equals the default value (10 000 objects).
+
 Possible values are limited by valid values within the range of the [System.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32?view=net-6.0) integer type.
 
 ### Command Examples
